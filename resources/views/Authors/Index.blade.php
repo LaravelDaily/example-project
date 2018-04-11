@@ -15,6 +15,7 @@
                 <th> #</th>
                 <th>Name</th>
                 <th>Lastname</th>
+                <th>Books</th>
                 <th>&nbsp;</th>
             </tr>
             </thead>
@@ -24,6 +25,7 @@
                     <td>{{ $author->id }}</td>
                     <td>{{ $author->name }}</td>
                     <td>{{ $author->lastname }}</td>
+                    <td>{{ $author->books->count() }}</td>
                     <td class="text-center">
                         <a href="{{ route('authors.edit', ['id'=>$author->id]) }}" class="btn btn-info btn-sm">Edit</a>
                         <a href="{{ route('authors.show', ['id'=>$author->id]) }}" class="btn btn-warning btn-sm">View</a>

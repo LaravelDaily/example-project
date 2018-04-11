@@ -9,7 +9,7 @@
 
                 <h3 class="page-title text-center">Edit Book</h3>
 
-                <form action="{{ route('books.update', ['id'=>$book->id]) }}" method="POST">
+                <form action="{{ route('books.update', ['id'=>$book->id]) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
 

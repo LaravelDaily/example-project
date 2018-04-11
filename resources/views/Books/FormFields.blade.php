@@ -23,12 +23,22 @@
     <label for="author_id">Author</label>
     <select name="author_id" id="author_id" class="form-control {{ $errors->has('author_id') ? 'is-invalid' : null }}">
         @foreach($authors as $author)
-            <option value="{{ $author->id }}">{{ $author->name }}</option>
+            <option value="{{ $author->id }}" {{ isset($book) && $book->author->id == $author->id ? 'selected' : '' }}>{{ $author->fullname }}</option>
         @endforeach
     </select>
     @if($errors->has('author_id'))
         <p class="invalid-feedback">
             {{ $errors->first('author_id') }}
+        </p>
+    @endif
+</div>
+
+<div class="form-group">
+    <label for="book_image">Image</label>
+    <input type="file" id="book_image" name="book_image" class="form-control {{ $errors->has('book_image') ? 'is-invalid' : null }}">
+    @if($errors->has('book_image'))
+        <p class="invalid-feedback">
+            {{ $errors->first('book_image') }}
         </p>
     @endif
 </div>

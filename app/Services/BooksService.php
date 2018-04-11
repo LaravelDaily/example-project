@@ -3,32 +3,42 @@
 namespace App\Services;
 
 use App\Book;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class BooksService
 {
 
-    protected $validationRules = [
-        'name' => 'required',
-        'author_id' => 'exists:authors,id'
-    ];
-
-    public function validate(Request $request)
+    public function store($request)
     {
-        $request->validate($this->validationRules);
-        return $this;
+
+        if ($request->hasFile('book_image')) {
+            $path = $request->book_image->store('public/images');
+        }
+
+        $data = $request->all();
+        $data['image_path'] = isset($path) ? $path : '';
+
+        return Book::create($data);
+
     }
 
-    public function create($data)
+    public function update($request, $id)
     {
-        Book::create($data);
-        return $this;
-    }
 
-    public function update($id, $data)
-    {
-        Book::find($id)->update($data);
-        return $this;
+        $book = Book::findOrFail($id);
+
+        if ($request->hasFile('book_image')) {
+            if ($book->image_path) {
+                unlink(storage_path('app/' . $book->image_path));
+            }
+            $path = $request->book_image->store('public/images');
+        }
+
+        $data = $request->all();
+        $data['image_path'] = isset($path) ? $path : '';
+
+        return $book->update($data);
+
     }
 
 }

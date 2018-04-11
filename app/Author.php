@@ -8,6 +8,13 @@ class Author extends Model
 {
     protected $fillable = ['name', 'lastname'];
 
+    public static $storeValidation = [
+        'name' => 'required',
+    ];
+    public static $updateValidation = [
+        'name' => 'required',
+    ];
+
     public function getFullnameAttribute()
     {
         return $this->name . ' ' . $this->lastname;

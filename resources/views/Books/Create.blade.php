@@ -9,7 +9,7 @@
 
                 <h3 class="page-title text-center">Create Book</h3>
 
-                <form action="{{ route('books.store') }}" method="POST">
+                <form action="{{ route('books.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
 
                     @include('Books.FormFields')

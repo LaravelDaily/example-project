@@ -3,11 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Author;
+use App\Repositories\AuthorRepository;
 use App\Services\AuthorsService;
 use Illuminate\Http\Request;
 
 class AuthorsController extends Controller
 {
+
+    private $repository;
+    public function __construct(AuthorRepository $repository)
+    {
+        $this->repository = $repository;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +23,8 @@ class AuthorsController extends Controller
      */
     public function index()
     {
-        $authors = Author::all();
+
+        $authors = $this->repository->getAuthorsByBooksSold();
         return view('Authors.Index', compact('authors'));
     }
 
@@ -37,10 +46,7 @@ class AuthorsController extends Controller
      */
     public function store(Request $request)
     {
-
-        $authorsService = new AuthorsService();
-        $authorsService->validate($request)->create($request->all());
-
+        Author::create($request->all());
         return redirect()->route('authors.index');
     }
 
@@ -77,9 +83,7 @@ class AuthorsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $authorsService = new AuthorsService();
-        $authorsService->validate($request)->update($id, $request->all());
-
+        Author::findOrFail($id)->update($request->all());
         return redirect()->route('authors.index');
     }
 

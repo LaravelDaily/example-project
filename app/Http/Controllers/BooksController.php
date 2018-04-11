@@ -4,11 +4,22 @@ namespace App\Http\Controllers;
 
 use App\Author;
 use App\Book;
+use App\Http\Requests\StoreBookRequest;
+use App\Http\Requests\UpdateBookRequest;
 use App\Services\BooksService;
 use Illuminate\Http\Request;
 
 class BooksController extends Controller
 {
+
+    private $service;
+
+    public function __construct(BooksService $booksService)
+    {
+        $this->service = $booksService;
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -37,10 +48,9 @@ class BooksController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreBookRequest $request)
     {
-        $bookService = new BooksService();
-        $bookService->validate($request)->create($request->all());
+        $this->service->store($request);
         return redirect()->route('books.index');
     }
 
@@ -64,8 +74,9 @@ class BooksController extends Controller
      */
     public function edit($id)
     {
-        $book = Book::findOrFail($id);
-        return view('Books.Edit', compact('book'));
+        $book = Book::with('author')->findOrFail($id);
+        $authors = Author::all();
+        return view('Books.Edit', compact('book', 'authors'));
     }
 
     /**
@@ -75,10 +86,9 @@ class BooksController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateBookRequest $request, $id)
     {
-        $booksService = new BooksService();
-        $booksService->validate($request)->update($id, $request->all());
+        $this->service->update($request, $id);
         return redirect()->route('books.index');
     }
 

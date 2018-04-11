@@ -10,7 +10,7 @@
         <table class="table table-sripped">
             <thead>
             <tr>
-                <th> #</th>
+                <th>#</th>
                 <th>Name</th>
                 <th>Description</th>
                 <th>Author</th>
