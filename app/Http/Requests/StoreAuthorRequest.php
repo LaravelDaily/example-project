@@ -24,6 +24,6 @@ class StoreAuthorRequest extends FormRequest
      */
     public function rules()
     {
-        return Author::$storeValdation;
+        return Author::$storeValidation;
     }
 }

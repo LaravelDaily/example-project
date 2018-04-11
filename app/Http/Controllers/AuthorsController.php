@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Author;
+use App\Http\Requests\StoreAuthorRequest;
+use App\Http\Requests\UpdateAuthorRequest;
 use App\Repositories\AuthorRepository;
 use App\Services\AuthorsService;
 use Illuminate\Http\Request;
@@ -44,7 +46,7 @@ class AuthorsController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreAuthorRequest $request)
     {
         Author::create($request->all());
         return redirect()->route('authors.index');
@@ -81,7 +83,7 @@ class AuthorsController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateAuthorRequest $request, $id)
     {
         Author::findOrFail($id)->update($request->all());
         return redirect()->route('authors.index');
