@@ -15,3 +15,5 @@ Route::redirect('/', '/books');
 Route::resource('/books', 'BooksController');
 Route::resource('/authors', 'AuthorsController');
 
+Route::get('/toggl/index', 'TogglController@index')->name('toggl.index');
+

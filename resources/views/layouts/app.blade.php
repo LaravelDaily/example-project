@@ -26,6 +26,7 @@
                 </ul>
 
                 <ul class="navbar-nav ml-auto">
+                    <li><a class="nav-link" href="{{ route('toggl.index') }}">Toggl</a></li>
                     <li><a class="nav-link" href="{{ route('authors.index') }}">Authors</a></li>
                     <li><a class="nav-link" href="{{ route('books.index') }}">Books</a></li>
                 </ul>
