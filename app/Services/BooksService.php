@@ -24,6 +24,8 @@ class BooksService
 
     public function update($request, $id)
     {
+        
+        $data = $request->all();
 
         $book = Book::findOrFail($id);
 
@@ -32,10 +34,9 @@ class BooksService
                 unlink(storage_path('app/' . $book->image_path));
             }
             $path = $request->book_image->store('public/images');
+            $data['image_path'] = $path;
         }
 
-        $data = $request->all();
-        $data['image_path'] = isset($path) ? $path : '';
 
         return $book->update($data);
 
