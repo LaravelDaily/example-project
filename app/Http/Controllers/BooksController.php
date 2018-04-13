@@ -12,11 +12,11 @@ use Illuminate\Http\Request;
 class BooksController extends Controller
 {
 
-    private $service;
+    private $booksService;
 
     public function __construct(BooksService $booksService)
     {
-        $this->service = $booksService;
+        $this->booksService = $booksService;
     }
 
 
@@ -50,7 +50,7 @@ class BooksController extends Controller
      */
     public function store(StoreBookRequest $request)
     {
-        $this->service->store($request);
+        $this->booksService->store($request);
         return redirect()->route('books.index');
     }
 
@@ -88,7 +88,7 @@ class BooksController extends Controller
      */
     public function update(UpdateBookRequest $request, $id)
     {
-        $this->service->update($request, $id);
+        $this->booksService->update($request, $id);
         return redirect()->route('books.index');
     }
 
