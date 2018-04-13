@@ -12,10 +12,10 @@ use Illuminate\Http\Request;
 class AuthorsController extends Controller
 {
 
-    private $repository;
-    public function __construct(AuthorRepository $repository)
+    private $authorRepository;
+    public function __construct(AuthorRepository $authorRepository)
     {
-        $this->repository = $repository;
+        $this->authorRepository = $authorRepository;
     }
 
     /**
@@ -26,7 +26,7 @@ class AuthorsController extends Controller
     public function index()
     {
 
-        $authors = $this->repository->getAuthorsByBooksSold();
+        $authors = $this->authorRepository->getAuthorsByBooksSold();
         return view('Authors.Index', compact('authors'));
     }
 

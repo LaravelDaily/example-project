@@ -24,7 +24,7 @@ class BooksService
 
     public function update($request, $id)
     {
-        
+
         $data = $request->all();
 
         $book = Book::findOrFail($id);

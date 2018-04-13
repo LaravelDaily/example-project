@@ -19,7 +19,7 @@ class TogglController extends Controller
         try {
             $me = $this->togglService->me();
         } catch (\Exception $e) {
-            return view('Toggl.Error')->withErrors(['message' => $e->getMessage()]);
+            return back()->withErrors(['message' => $e->getMessage()]);
         }
 
         return view('Toggl.Index', compact('me'));
