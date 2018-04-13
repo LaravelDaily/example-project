@@ -13,13 +13,12 @@
         <div class="row">
             <div class="col-6 offset-3 text-center">
 
-                <h3 class="page-title text-center">Edit Author</h3>
+                <h3 class="page-title text-center">Create Author</h3>
 
-                <form action="{{ route('authors.update', ['id'=>$author->id]) }}" method="POST">
+                <form action="{{ route('authors.store') }}" method="POST">
                     @csrf
-                    @method('PUT')
 
-                    @include('Authors.FormFields')
+                    @include('authors.formFields')
 
                     <input type="submit" class="btn btn-info" value="Save">
 

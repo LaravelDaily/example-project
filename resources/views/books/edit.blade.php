@@ -13,12 +13,13 @@
         <div class="row">
             <div class="col-6 offset-3 text-center">
 
-                <h3 class="page-title text-center">Create Book</h3>
+                <h3 class="page-title text-center">Edit Book</h3>
 
-                <form action="{{ route('books.store') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('books.update', ['id'=>$book->id]) }}" method="POST" enctype="multipart/form-data">
                     @csrf
+                    @method('PUT')
 
-                    @include('Books.FormFields')
+                    @include('books.formFields')
 
                     <input type="submit" class="btn btn-info" value="Save">
 

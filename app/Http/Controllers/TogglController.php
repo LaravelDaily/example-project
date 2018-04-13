@@ -22,7 +22,7 @@ class TogglController extends Controller
             return back()->withErrors(['message' => $e->getMessage()]);
         }
 
-        return view('Toggl.Index', compact('me'));
+        return view('toggl.index', compact('me'));
     }
 
 }

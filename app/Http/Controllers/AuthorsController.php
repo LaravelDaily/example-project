@@ -27,7 +27,7 @@ class AuthorsController extends Controller
     {
 
         $authors = $this->authorRepository->getAuthorsByBooksSold();
-        return view('Authors.Index', compact('authors'));
+        return view('authors.index', compact('authors'));
     }
 
     /**
@@ -37,7 +37,7 @@ class AuthorsController extends Controller
      */
     public function create()
     {
-        return view('Authors.Create');
+        return view('authors.Create');
     }
 
     /**
@@ -61,7 +61,7 @@ class AuthorsController extends Controller
     public function show($id)
     {
         $author = Author::with('books')->findOrFail($id);
-        return view('Authors.Show', compact('author'));
+        return view('authors.show', compact('author'));
     }
 
     /**
@@ -73,7 +73,7 @@ class AuthorsController extends Controller
     public function edit($id)
     {
         $author = Author::findOrFail($id);
-        return view('Authors.Edit', compact('author'));
+        return view('authors.edit', compact('author'));
     }
 
     /**

@@ -28,7 +28,7 @@ class BooksController extends Controller
     public function index()
     {
         $books = Book::with('author')->get();
-        return view('Books.Index', compact('books'));
+        return view('books.index', compact('books'));
     }
 
     /**
@@ -39,7 +39,7 @@ class BooksController extends Controller
     public function create()
     {
         $authors = Author::all();
-        return view('Books.Create', compact('authors'));
+        return view('books.create', compact('authors'));
     }
 
     /**
@@ -63,7 +63,7 @@ class BooksController extends Controller
     public function show($id)
     {
         $book = Book::findOrFail($id);
-        return view('Books.Show', compact('book'));
+        return view('books.show', compact('book'));
     }
 
     /**
@@ -76,7 +76,7 @@ class BooksController extends Controller
     {
         $book = Book::with('author')->findOrFail($id);
         $authors = Author::all();
-        return view('Books.Edit', compact('book', 'authors'));
+        return view('books.edit', compact('book', 'authors'));
     }
 
     /**
