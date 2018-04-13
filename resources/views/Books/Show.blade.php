@@ -3,6 +3,12 @@
 @section('content')
 
     <div class="container">
+        
+        <div class="row mb-3">
+            <div class="col-6 offset-3">
+                <a class="btn btn-info btn-sm" href="{{ route('books.index') }}">Back to list</a>
+            </div>
+        </div>
 
         <h3 class="page-title text-center">Book</h3>
 

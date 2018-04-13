@@ -4,6 +4,12 @@
 
     <div class="container">
 
+        <div class="row mb-3">
+            <div class="col-6 offset-3">
+                <a class="btn btn-info btn-sm" href="{{ route('authors.index') }}">Back to list</a>
+            </div>
+        </div>
+
         <h3 class="text-center">Author</h3>
 
         <div class="row">

@@ -5,8 +5,8 @@
 
     <div class="container mt-5">
 
-
         <h3>Authors</h3>
+
         <a class="btn btn-info btn-sm mb-3" href="{{ route('authors.create') }}">Create</a>
 
         <table class="table table-sripped">
