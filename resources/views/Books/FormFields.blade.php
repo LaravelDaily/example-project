@@ -10,8 +10,7 @@
 
 <div class="form-group">
     <label for="description">Description</label>
-    <textarea name="description" id="description" cols="30" rows="5" placeholder="Description" class="form-control {{ $errors->has('description') ? 'is-invalid' : null }}"
-              value="{{ isset($book) ? $book->description : null }}"></textarea>
+    <textarea name="description" id="description" cols="30" rows="5" placeholder="Description" class="form-control {{ $errors->has('description') ? 'is-invalid' : null }}">{{ isset($book) ? $book->description : null }}</textarea>
     @if($errors->has('description'))
         <p class="invalid-feedback">
             {{ $errors->first('description') }}
