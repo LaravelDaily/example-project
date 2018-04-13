@@ -7,17 +7,17 @@ use App\Services\TogglService;
 class TogglController extends Controller
 {
 
-    private $service;
+    private $togglService;
 
     public function __construct(TogglService $togglService)
     {
-        $this->service = $togglService;
+        $this->togglService = $togglService;
     }
 
     public function index()
     {
         try {
-            $me = $this->service->me();
+            $me = $this->togglService->me();
         } catch (\Exception $e) {
             return view('Toggl.Error')->withErrors(['message' => $e->getMessage()]);
         }
