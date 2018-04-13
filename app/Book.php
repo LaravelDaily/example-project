@@ -19,6 +19,11 @@ class Book extends Model
         'book_image' => 'image'
     ];
 
+    public function getImageUrlAttribute()
+    {
+        return str_replace('public', 'storage', $this->image_path);
+    }
+
     public function author()
     {
         return $this->belongsTo(Author::class);

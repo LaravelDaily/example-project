@@ -14,6 +14,7 @@
                 <th>Name</th>
                 <th>Description</th>
                 <th>Author</th>
+                <th>Image</th>
                 <th>&nbsp;</th>
             </tr>
             </thead>
@@ -24,6 +25,9 @@
                     <td>{{ $book->name }}</td>
                     <td>{{ $book->description }}</td>
                     <td>{{ $book->author->fullname }}</td>
+                    <td>
+                        <img width="100px;" src="{{ $book->image_url ? asset($book->image_url) : '' }}" alt="">
+                    </td>
                     <td class="text-center">
                         <a href="{{ route('books.edit', ['id'=>$book->id]) }}" class="btn btn-info btn-sm">Edit</a>
                         <a href="{{ route('books.show', ['id'=>$book->id]) }}" class="btn btn-warning btn-sm">View</a>
