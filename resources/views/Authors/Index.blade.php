@@ -32,7 +32,7 @@
                         <form action="{{ route('authors.destroy', ['id'=>$author->id]) }}" method="POST" style="display: inline-block;">
                             @csrf
                             @method('DELETE')
-                            <input type="submit" class="btn btn-danger btn-sm" value="Delete">
+                            <input type="submit" class="btn btn-danger btn-sm" value="Delete" onclick="confirm('Are you sure?')">
                         </form>
                     </td>
                 </tr>
