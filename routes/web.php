@@ -11,10 +11,16 @@
 |
 */
 
-Route::redirect('/', '/books');
-Route::resource('/books', 'BooksController');
-Route::resource('/authors', 'AuthorsController');
+Route::group(['middleware' => 'auth'], function() {
+    Route::redirect('/', '/books');
+    Route::resource('/books', 'BooksController');
+    Route::resource('/authors', 'AuthorsController');
 
-Route::get('/toggl/index', 'TogglController@index')->name('toggl.index');
-Route::get('/toggl/timeEntries', 'TogglController@timeEntries')->name('toggl.timeEntries');
+    Route::get('/toggl/index', 'TogglController@index')->name('toggl.index');
+    Route::get('/toggl/timeEntries', 'TogglController@timeEntries')->name('toggl.timeEntries');
+});
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
