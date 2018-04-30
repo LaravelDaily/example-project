@@ -26,7 +26,7 @@
                     <tbody>
                     @forelse($timeEntries as $entry)
                         <tr>
-                            <td>{{ $entry->description }}</td>
+                            <td>{{ $entry->description ?? '-'}}</td>
                             <td>{{ \Carbon\Carbon::parse($entry->start)->format('Y-m-d H:i:s') }}</td>
                             <td>{{ \Carbon\Carbon::parse($entry->stop)->format('Y-m-d H:i:s') }}</td>
                             <td>{{ gmdate("H:i:s", $entry->duration) }}</td>
