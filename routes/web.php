@@ -15,7 +15,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route::redirect('/', '/books');
     Route::resource('/books', 'BooksController');
     Route::resource('/authors', 'AuthorsController');
-    Route::resource('toggl_reports', 'TogglReportsController', ['only' => ['index', 'create', 'store', 'destroy']]);
+    Route::resource('togglReports', 'TogglReportsController', ['only' => ['index', 'create', 'store', 'destroy']]);
 
     Route::get('/toggl/index', 'TogglController@index')->name('toggl.index');
     Route::get('/toggl/timeEntries', 'TogglController@timeEntries')->name('toggl.timeEntries');

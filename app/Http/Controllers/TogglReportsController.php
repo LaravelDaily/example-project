@@ -50,7 +50,7 @@ class TogglReportsController extends Controller
     {
         $reports = TogglReport::paginate(10);
 
-        return view('toggl_reports.index', compact('reports'));
+        return view('togglReports.index', compact('reports'));
     }
 
     /**
@@ -60,7 +60,7 @@ class TogglReportsController extends Controller
      */
     public function create()
     {
-        return view('toggl_reports.create');
+        return view('togglReports.create');
     }
 
     /**
@@ -71,27 +71,27 @@ class TogglReportsController extends Controller
      */
     public function store(StoreTogglReportRequest $request)
     {
-        $title      = $request->input('report_title');
-        $start      = $request->input('start_date');
-        $end        = $request->input('end_date');
-        $user_name  = $this->togglService->me()->data->fullname;
-        $file_name  = $this->reportGenerator->generateReport($title, $start, $end);
+        $title    = $request->input('report_title');
+        $start    = $request->input('start_date');
+        $end      = $request->input('end_date');
+        $userName = $this->togglService->me()->data->fullname;
+        $fileName = $this->reportGenerator->generateReport($title, $start, $end);
 
-        if (!$file_name) {
-            return redirect()->route('toggl_reports.index')
+        if (!$fileName) {
+            return redirect()->route('togglReports.index')
                 ->with('status', 'danger')
                 ->with('message', 'There is no entries at date interval given');
         }
 
         TogglReport::create([
-            'file_name'  => $file_name,
-            'user_name'  => $user_name,
+            'file_name'  => $fileName,
+            'user_name'  => $userName,
             'title'      => $title,
             'start_date' => $start,
             'end_date'   => $end
         ]);
 
-        return redirect()->route('toggl_reports.index')
+        return redirect()->route('togglReports.index')
             ->with('status', 'success')
             ->with('message', 'Report created. You can download it now.');
     }
@@ -106,7 +106,7 @@ class TogglReportsController extends Controller
     {
         $this->togglReportService->deleteReport(TogglReport::findOrFail($id));
 
-        return redirect()->route('toggl_reports.index')
+        return redirect()->route('togglReports.index')
             ->with('status', 'success')
             ->with('message', 'Report deleted.');
     }

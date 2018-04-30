@@ -16,9 +16,9 @@ class TogglReportGenerationService
         $this->togglService = $togglService;
     }
 
-    private function getGroupedByDescriptionTimeEntries($start_date, $end_date)
+    private function getGroupedByDescriptionTimeEntries($startDate, $endDate)
     {
-        $entries = collect($this->togglService->getTimeEntries($start_date, $end_date));
+        $entries = collect($this->togglService->getTimeEntries($startDate, $endDate));
 
         $entries = $entries->map(function($entry){
             $entry->description = $entry->description ?? 'untitled';
@@ -35,14 +35,14 @@ class TogglReportGenerationService
         });
     }
 
-    private function getDescriptionAndTimeArray($start_date, $end_date)
+    private function getDescriptionAndTimeArray($startDate, $endDate)
     {
-        $entries = $this->getGroupedByDescriptionTimeEntries($start_date, $end_date);
+        $entries = $this->getGroupedByDescriptionTimeEntries($startDate, $endDate);
 
         $result = [];
 
-        foreach ($entries as $description => $entries_group) {
-            $result[$description] = $this->calculateGroupTotalTime($entries_group);
+        foreach ($entries as $description => $entriesGroup) {
+            $result[$description] = $this->calculateGroupTotalTime($entriesGroup);
         }
 
         return $result;
@@ -92,20 +92,20 @@ class TogglReportGenerationService
         return strtolower($filename);
     }
 
-    public function generateReport($title, $start_date, $end_date)
+    public function generateReport($title, $startDate, $endDate)
     {
-        $entries = $this->getDescriptionAndTimeArray($start_date, $end_date);
+        $entries = $this->getDescriptionAndTimeArray($startDate, $endDate);
 
         if (count($entries) <= 0) {
             return false;
         }
 
-        $total_time = $this->formatTime($this->getTotalReportTime($entries));
-        $name       = $this->togglService->me()->data->fullname;
-        $entries    = $this->formatEntriesTime($entries);
+        $totalTime = $this->formatTime($this->getTotalReportTime($entries));
+        $name      = $this->togglService->me()->data->fullname;
+        $entries   = $this->formatEntriesTime($entries);
 
         $dompdf = new Dompdf();
-        $dompdf->loadHtml(view('toggl_reports.pdf.report', compact('entries', 'total_time', 'start_date', 'end_date', 'name')));
+        $dompdf->loadHtml(view('togglReports.pdf.report', compact('entries', 'totalTime', 'startDate', 'endDate', 'name')));
         $dompdf->render();
 
         return $this->saveToFile($this->formatTitleToFilename($title), $dompdf->output());

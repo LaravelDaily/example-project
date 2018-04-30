@@ -12,7 +12,7 @@
         @endif
 
         <h3>Toggl reports</h3>
-        <a class="btn btn-info btn-sm my-4" href="{{ route('toggl_reports.create') }}">Create</a>
+        <a class="btn btn-info btn-sm my-4" href="{{ route('togglReports.create') }}">Create</a>
         <table class="table table-sripped">
             <thead>
             <tr>
@@ -38,7 +38,7 @@
                         </a>
                     </td>
                     <td class="text-center">
-                        <form action="{{ route('toggl_reports.destroy', ['id' => $report->id]) }}" method="POST" style="display: inline-block;">
+                        <form action="{{ route('togglReports.destroy', ['id' => $report->id]) }}" method="POST" style="display: inline-block;">
                             @csrf
                             @method('DELETE')
                             <input type="submit" class="btn btn-danger btn-sm" value="Delete" onclick="confirm('Are you sure?')">

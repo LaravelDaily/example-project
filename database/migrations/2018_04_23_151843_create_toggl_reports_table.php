@@ -5,14 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
 class CreateTogglReportsTable extends Migration
-{    protected $fillable = [
-    'start_date',
-    'end_date',
-    'report_title',
-    'user_name',
-    'file_name'
-];
-
+{
     /**
      * Run the migrations.
      *

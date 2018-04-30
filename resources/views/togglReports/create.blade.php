@@ -6,7 +6,7 @@
 
         <div class="row mb-3">
             <div class="col-6 offset-3">
-                <a class="btn btn-info btn-sm" href="{{ route('toggl_reports.index') }}">Back to list</a>
+                <a class="btn btn-info btn-sm" href="{{ route('togglReports.index') }}">Back to list</a>
             </div>
         </div>
 
@@ -15,7 +15,7 @@
 
                 <h3 class="page-title">Create Report</h3>
 
-                <form action="{{ route('toggl_reports.store') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('togglReports.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
 
                     <div class="form-group">

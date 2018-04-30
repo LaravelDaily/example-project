@@ -3,10 +3,10 @@
 </head>
 <body>
 
-@include('toggl_reports.pdf.partials.header')
+@include('togglReports.pdf.partials.header')
 
 <main style="margin-left: 45px; margin-right: 60px;">
-    <span style="font-size: 30px"><strong>Total: </strong>{{ $total_time }}</span>
+    <span style="font-size: 30px"><strong>Total: </strong>{{ $totalTime }}</span>
     <br>
     <ul>
         @foreach($entries as $description => $time)
