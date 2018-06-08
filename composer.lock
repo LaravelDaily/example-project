@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2e43487cf81872185c3a751492dc4d4f",
+    "content-hash": "2cc1865bd7380574c252e59432eb7f60",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -1837,66 +1837,6 @@
                 "stylesheet"
             ],
             "time": "2016-07-19T19:14:21+00:00"
-        },
-        {
-            "name": "spatie/laravel-newsletter",
-            "version": "4.2.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spatie/laravel-newsletter.git",
-                "reference": "f25f1fa2d12e6266d488069e59a0cdd9f9a28a83"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-newsletter/zipball/f25f1fa2d12e6266d488069e59a0cdd9f9a28a83",
-                "reference": "f25f1fa2d12e6266d488069e59a0cdd9f9a28a83",
-                "shasum": ""
-            },
-            "require": {
-                "drewm/mailchimp-api": "^2.4",
-                "illuminate/support": "~5.5.0|~5.6.0",
-                "php": "~7.0"
-            },
-            "require-dev": {
-                "mockery/mockery": "^1.0",
-                "phpunit/phpunit": "^6.3|^7.0"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Spatie\\Newsletter\\NewsletterServiceProvider"
-                    ],
-                    "aliases": {
-                        "Newsletter": "Spatie\\Newsletter\\NewsletterFacade"
-                    }
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Spatie\\Newsletter\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Freek Van der Herten",
-                    "email": "freek@spatie.be",
-                    "homepage": "https://murze.be",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Manage newsletters in Laravel",
-            "homepage": "https://github.com/spatie/laravel-newsletter",
-            "keywords": [
-                "laravel",
-                "mailchimp",
-                "newsletter"
-            ],
-            "time": "2018-03-10T07:53:32+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
