@@ -24,7 +24,7 @@ class MailchimpController extends Controller
      */
     public function create()
     {
-        return view('mailchimp.create', compact('mailchimp'));
+        return view('mailchimp.create');
     }
 
     /**
