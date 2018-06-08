@@ -9,18 +9,18 @@
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+ */
 
-Route::group(['middleware' => 'auth'], function() {
+Route::group(['middleware' => 'auth'], function () {
     Route::redirect('/', '/books');
-    Route::resource('/books', 'BooksController');
-    Route::resource('/authors', 'AuthorsController');
+    Route::resource('books', 'BooksController');
+    Route::resource('authors', 'AuthorsController');
     Route::resource('togglReports', 'TogglReportsController', ['only' => ['index', 'create', 'store', 'destroy']]);
+    Route::resource('mailchimp', 'MailchimpController', ['only' => ['store', 'create']]);
 
     Route::get('/toggl/index', 'TogglController@index')->name('toggl.index');
     Route::get('/toggl/timeEntries', 'TogglController@timeEntries')->name('toggl.timeEntries');
 });
-
 
 Auth::routes();
 
